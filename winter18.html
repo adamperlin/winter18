@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+ 
+        <title>Solve these roots</title>
+       <link href="http://saasmath.seattleacademy.org/adamperlin/css/bootswatchunited.css" rel="stylesheet">
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+         <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+           <script>
+            $(document).ready(function() {
+                $('input').change(function() {
+ 
+                    correct=$(this).data('correct');
+                    response=$(this).val();
+
+                  
+
+                    if(correct==response){
+                        $(this).removeClass("incorrect").addClass("correct");
+                        numcorrect = $('#correct').text();
+                        //We multiply by 1 change from type text to number
+                        $('#correct').text(numcorrect*1+1);
+                        $('answeralert').text("Correct!");
+                        $('#success').trigger('play');
+                        
+                        
+                    }
+                    else
+                    {
+                        $(this).removeClass("correct").addClass("incorrect");
+                           numerrors = $('#errors').text();
+                        $('#errors').text(numerrors*1+1);
+                        $('#error').trigger('play');
+                    }
+                
+                    $('#percorrect').text((numcorrect*1/(numcorrect*1+numerrors*1))*100);
+                    
+ 
+                });
+            });
+            </script>
+ 
+        <style type="text/css">
+            .correct { 
+                background:green;
+            }
+ 
+            .incorrect { 
+                background:red;
+            }
+ 
+            #score{
+                border:2px dashed green;
+            }
+            #conjhead{text-align: center;}
+        </style>
+ 
+ 
+    </head>
+ 
+    <body>
+        <div class="container">
+         <div id="score">
+            Correct: <span id="correct">0</span>
+            Errors:  <span id="errors">0</span>
+            %Correct: <span id="percorrect">0</span>
+         </div>
+
+                
+                
+
+                                                  
+                        <div class="row" id="roots">
+                            <div id="roothead"><h2> Solve These Roots: </h2></div>
+                            <div class= "col-xs-6 col-sm-4 col-md-4, jumbotron">
+                        
+                            <p> \( \sqrt[3]{64}\) <input data-correct= "4"/></p><span></span>
+                            <p> \( \sqrt[4]{625}\) <input data-correct= "5"/></p><span></span>
+                            <p> \( \sqrt[3]{216}\) <input data-correct= "apprenons"/></p><span></span>
+                            <p> \( \sqrt[5]{32}\) <input data-correct= "apprennez"/></p><span></span>
+                            <p>\( \sqrt{1024}\) <input data-correct="aprennent"></p><span></span>
+                            </div>
+
+                            <div class= "col-xs-6 col-sm-4 col-md-4, jumbotron">
+                            <p> \( \sqrt[4]{81}\) <input data-correct= "3"/><span></span></p>
+                            <p> \( \sqrt[5]{1024}\) <input data-correct= "4"/></p><span></span>
+                            <p> \( \sqrt[3]{343}\) <input data-correct= "7"/></p><span></span>
+                            <p> \( \sqrt[3]{512}\) <input data-correct= ""/></p><span></span>
+                            <p> \( \sqrt{625}\) <input data-correct= "comprennez"/></p><span></span>
+        
+                            </div>
+
+                        </div>
+
+         </div> 
+
+
+
+
+
+            
+
+
+            <audio src= "success.mp3" preload="auto" id="success"> </audio>
+            <audio src="airhorn.mp3" preload="auto" id="error"> </audio>
+                                                 
+        </div>
+
+
+
+
+    </body>
+ 
+</html>
